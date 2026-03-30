@@ -5,16 +5,13 @@ export default function Home() {
   const [cuaca, setCuaca] = useState([]);
 
   useEffect(() => {
-    fetch("https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=14.71.01.1001")
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        if (data?.data?.[0]?.cuaca) {
-          setCuaca(data.data[0].cuaca);
-        }
-      })
-      .catch(err => console.error(err));
-  }, []);
+    fetch("https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=31.71.03.1001")
+        .then(res => res.json())
+        .then(data => {
+            console.log(data); // 👉 DI SINI
+            setCuaca(data.data[0].cuaca);
+        });
+    }, []);
 
   if (!cuaca.length) return <p>Loading data cuaca...</p>;
 
